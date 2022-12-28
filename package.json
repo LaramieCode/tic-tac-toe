@@ -1,0 +1,26 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "tic tac toe project from theodinproject",
+  "main": "javascript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaramieCode/tic-tac-toe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LaramieCode/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/LaramieCode/tic-tac-toe#readme",
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "prettier": "2.8.1"
+  }
+}
