@@ -1,0 +1,2 @@
+goal: a game of tictactoe that resets the board everytime someone gets three in a row, and tracks how many rounds each player wins, aswell as pausing the game when
+someone wins and displays a newround button.
