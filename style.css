@@ -2,3 +2,35 @@
     margin: 0;
     padding: 0;
 }
+
+.boardContainer {
+    height: 400px;
+    width: 400px;
+}
+.board {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    background-color: rgb(65, 65, 65);
+}
+.boardSquares {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+}
+.boardSquares:hover {
+    background-color: rgb(32, 32, 32);
+}
+
+
+.playerWins {
+    display: flex
+}
+.playerWins>p {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+}
