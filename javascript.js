@@ -56,16 +56,7 @@ const TicTacToe = (function () {
         console.log("game tie");
       }
     };
-    const newRound = function () {
-      gameBoard.array.forEach(function (value, index) {
-        gameBoard.array[index] = "";
-      });
-      players.playerTurn = players.X;
-      game.status = true;
-      gameBoard.winningScenarios();
-      dom.render();
-    };
-    return { checkWinner, checkTie, newRound, status };
+    return { checkWinner, checkTie, status };
   })();
   dom.board.addEventListener("click", function (e) {
     if (!game.status) return; // returns if game is not active
