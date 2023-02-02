@@ -46,7 +46,16 @@ const TicTacToe = (function () {
         }
       });
     };
-    return { checkWinner, status };
+    const checkTie = function () {
+      let tie = gameBoard.array.every(function (value) {
+        return value.length > 0;
+      });
+      if (tie) {
+        game.status = false;
+        console.log("game tie");
+      }
+    };
+    return { checkWinner, checkTie, status };
   })();
   dom.board.addEventListener("click", function (e) {
     if (!game.status) return; // returns if game is not active
@@ -54,6 +63,9 @@ const TicTacToe = (function () {
     if (e.target.innerText.length > 0) return; // returns if square is already used / only works after render
     gameBoard.array[e.target.id] = players.playerTurn.move; // updates gameBoard.array with input
     game.checkWinner();
+    if (game.status) {
+      game.checkTie();
+    }
     switch (players.playerTurn) {
       case players.X:
         players.playerTurn = players.O;
