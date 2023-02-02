@@ -93,5 +93,4 @@ const TicTacToe = (function () {
     gameBoard.winningScenarios();
     dom.render();
   });
-  return { gameBoard, game, dom, players };
 })();
