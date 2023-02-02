@@ -24,12 +24,13 @@ const TicTacToe = (function () {
   const dom = (function () {
     const board = document.querySelector(".board");
     const squares = document.querySelectorAll(".boardSquares");
+    const resetBtn = document.querySelector(".newRoundBtn");
     const render = function () {
       gameBoard.array.forEach(function (value, index) {
         squares[index].innerText = value;
       });
     };
-    return { board, squares, render };
+    return { board, squares, resetBtn, render };
   })();
   const game = (function () {
     let status = true;
@@ -55,7 +56,16 @@ const TicTacToe = (function () {
         console.log("game tie");
       }
     };
-    return { checkWinner, checkTie, status };
+    const newRound = function () {
+      gameBoard.array.forEach(function (value, index) {
+        gameBoard.array[index] = "";
+      });
+      players.playerTurn = players.X;
+      game.status = true;
+      gameBoard.winningScenarios();
+      dom.render();
+    };
+    return { checkWinner, checkTie, newRound, status };
   })();
   dom.board.addEventListener("click", function (e) {
     if (!game.status) return; // returns if game is not active
@@ -78,5 +88,14 @@ const TicTacToe = (function () {
     }
     dom.render();
   });
-  return { gameBoard, game };
+  dom.resetBtn.addEventListener("click", function () {
+    gameBoard.array.forEach(function (value, index) {
+      gameBoard.array[index] = "";
+    });
+    players.playerTurn = players.X;
+    game.status = true;
+    gameBoard.winningScenarios();
+    dom.render();
+  });
+  return { gameBoard, game, dom };
 })();
