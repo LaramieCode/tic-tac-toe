@@ -27,6 +27,12 @@ const TicTacToe = (function () {
     const resetBtn = document.querySelector(".newRoundBtn");
     const playerXWins = document.querySelector("#playerXWins");
     const playerOWins = document.querySelector("#playerOWins");
+    const gameText = document.querySelector(".gameText");
+    const resetBtnContainer = document.querySelector(".newRoundBtnContainer");
+    const toggleBtn = function () {
+      resetBtnContainer.classList.toggle("hidden");
+      gameText.classList.toggle("hidden");
+    };
     const render = function () {
       gameBoard.array.forEach(function (value, index) {
         squares[index].innerText = value;
@@ -34,7 +40,15 @@ const TicTacToe = (function () {
       playerXWins.textContent = players.X.wins;
       playerOWins.textContent = players.O.wins;
     };
-    return { board, squares, resetBtn, playerXWins, playerOWins, render };
+    return {
+      board,
+      squares,
+      resetBtn,
+      playerXWins,
+      playerOWins,
+      render,
+      toggleBtn,
+    };
   })();
   const game = (function () {
     let status = true;
@@ -46,6 +60,7 @@ const TicTacToe = (function () {
           value[0] == value[1] &&
           value[1] == value[2]
         ) {
+          dom.toggleBtn();
           players.playerTurn.wins += 1;
           game.status = false;
           console.log(`${players.playerTurn.move} wins`);
@@ -57,6 +72,7 @@ const TicTacToe = (function () {
         return value.length > 0;
       });
       if (tie) {
+        dom.toggleBtn();
         game.status = false;
         console.log("game tie");
       }
@@ -88,9 +104,11 @@ const TicTacToe = (function () {
     gameBoard.array.forEach(function (value, index) {
       gameBoard.array[index] = "";
     });
+    dom.toggleBtn();
     players.playerTurn = players.X;
     game.status = true;
     gameBoard.winningScenarios();
     dom.render();
   });
+  return { dom };
 })();
